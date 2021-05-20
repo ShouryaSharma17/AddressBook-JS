@@ -116,6 +116,11 @@ function deleteContact(fName, lName){
     }
 }
 
+function countContact(count) {
+    count += 1;
+    return count;
+}
+
 try{
 addressBookArr.push(new Contact("Arijit", "Dey", "Sodepur", "Kolkata", "West Bengal", "123456", "91 9898989898", "arijit@gmail.com"));
 }catch(e){
@@ -132,5 +137,9 @@ console.log(addressBookArr);
 editContact("Raj", "Pal", "address", "Dumdum");
 console.log(addressBookArr);
 
+console.log("No of contacts : "+ addressBookArr.reduce(countContact, 0));
+
 deleteContact("Raj", "Pal");
 console.log(addressBookArr);
+
+console.log("No of contacts : "+ addressBookArr.reduce(countContact, 0));
