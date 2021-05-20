@@ -74,14 +74,51 @@ class Contact {
 }  
 
 let addressBookArr = new Array();
+
+function contactExists(fName, lName){
+    return addressBookArr.some(u => u.firstName == fName && u.lastName == lName);
+}
+
+function editContact(fName, lName, property, value){
+    if(contactExists(fName, lName)){
+    switch(property){
+        case "address":
+            addressBookArr.find((contact) => contact.firstName == fName).address = value;
+            break;
+        case "city":
+            addressBookArr.find((contact) => contact.firstName == fName).city = value;
+            break;
+        case "state":
+            addressBookArr.find((contact) => contact.firstName == fName).state = value;
+            break;
+        case "zip":
+            addressBookArr.find((contact) => contact.firstName == fName).zip = value;
+            break;
+        case "phone":
+            addressBookArr.find((contact) => contact.firstName == fName).phoneNo = value;
+            break;
+        case "email":
+            addressBookArr.find((contact) => contact.firstName == fName).email = value;
+            break;
+        default:
+            console.log("Enter valid property");
+    }
+  }else{
+      console.log("Contact Does Not Exist");
+  }
+}
 try{
 addressBookArr.push(new Contact("Arijit", "Dey", "Sodepur", "Kolkata", "West Bengal", "123456", "91 9898989898", "arijit@gmail.com"));
 }catch(e){
     console.error(e);
 }
+
 try{
     addressBookArr.push(new Contact("Raj", "Pal", "Kalyani", "Kolkata", "West Bengal", "234567", "91 9898989897", "raj@gmail.com"));
 }catch(e){
     console.error(e);
 }
+console.log(addressBookArr);
+
+editContact("Raj", "Pal", "address", "Dumdum");
 console.log(addressBookArr);
